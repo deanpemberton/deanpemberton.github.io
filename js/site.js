@@ -32,10 +32,6 @@ JekyllMaps.prototype._createMap = function() {
   L.tileLayer( '{{ site.map-tileset }}', {
     attribution: '{{ site.map-credits }}'
   }).addTo( this.map );
-  this.geojson = L.geoJson( this.data, { if (feature.properties && feature.properties.name) {
-                layer.bindPopup(feature.properties.name, {closeButton: false, offset: L.point(0, -20)});
-                layer.on('mouseover', function() { layer.openPopup(); });
-                layer.on('mouseout', function() { layer.closePopup(); });
-            } } ).addTo( this.map );
+  this.geojson = L.geoJson( this.data ).addTo( this.map );
   this.map.fitBounds(this.geojson.getBounds());
 }

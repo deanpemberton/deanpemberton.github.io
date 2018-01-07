@@ -47,9 +47,9 @@ JekyllMaps.prototype._createMap = function() {
        }
    });
   
-   // this.addLayer(gpsMarker);
-   // this.fitBounds(gpsMarker.getBounds(), {padding: [0, 0]});
+   this.addLayer(gpsMarker);
+   this.fitBounds(gpsMarker.getBounds(), {padding: [0, 0]});
   
-  this.geojson = L.geoJson(gpsMarker ).addTo( this.map );
-  this.map.fitBounds(this.geojson.getBounds());
+  //this.geojson = L.geoJson(gpsMarker ).addTo( this.map );
+  //this.map.fitBounds(this.geojson.getBounds());
 }

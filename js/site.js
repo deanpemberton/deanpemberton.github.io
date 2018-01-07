@@ -4,7 +4,9 @@
 var JekyllMaps = function () {
   console.info( 'Jekyll Maps :)' );
   this.map;
-  this.data = [
+  this.data = {
+    type: 'FeatureCollection',
+    features: [
       {% for post in site.posts %}{
         'type': 'Feature',
         'properties': {
@@ -19,7 +21,8 @@ var JekyllMaps = function () {
           ]
         }
       },{% endfor %}
-    ];
+    ]
+  };
 
   this._createMap();
 }
@@ -29,24 +32,6 @@ JekyllMaps.prototype._createMap = function() {
   L.tileLayer( '{{ site.map-tileset }}', {
     attribution: '{{ site.map-credits }}'
   }).addTo( this.map );
-  
-
-   gpsMarker = new L.geoJson(this.data, {
-       onEachFeature: function(feature, layer) {
-          if (feature.properties && feature.properties.name) {
-              layer.bindPopup(feature.properties.name, {closeButton: false, offset: L.point(0, -20)});
-              layer.on('mouseover', function() { layer.openPopup(); });
-               layer.on('mouseout', function() { layer.closePopup(); });
-           }
-      },
-        pointToLayer: function (feature, latlng) {
-           return L.circleMarker(latlng);
-       }
-   });
-  
-   this.addLayer(gpsMarker);
-   this.fitBounds(gpsMarker.getBounds(), {padding: [0, 0]});
-  
-  //this.geojson = L.geoJson(gpsMarker ).addTo( this.map );
-  //this.map.fitBounds(this.geojson.getBounds());
+  this.geojson = L.geoJson( this.data ).addTo( this.map );
+  this.map.fitBounds(this.geojson.getBounds());
 }

@@ -1,11 +1,9 @@
-# Config
 baseurl:
 url: 'http://example.com'
 markdown: kramdown
-
-# Site
 title: Jekyll Maps
-
-# Map
-map-tileset: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
-map-credits: '<a target="_blank" href="https://github.com/svmatthews/jekyll-maps">Jekyll Maps</a> | Tiles: Stamen & OSM'
+map-tileset: >-
+  https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
+map-credits: >-
+  <a target="_blank" href="https://github.com/svmatthews/jekyll-maps">Jekyll
+  Maps</a> | Tiles: Stamen & OSM

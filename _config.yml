@@ -7,5 +7,5 @@ markdown: kramdown
 title: Jekyll Maps
 
 # Map
-map-tileset: 'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png'
+map-tileset: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
 map-credits: '<a target="_blank" href="https://github.com/svmatthews/jekyll-maps">Jekyll Maps</a> | Tiles: Stamen & OSM'

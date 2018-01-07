@@ -36,7 +36,7 @@ JekyllMaps.prototype._createMap = function() {
 
    gpsMarker = new L.geoJson(this.data, {
        onEachFeature: function(feature, layer) {
-          if (feature.properties && feature.properties.popupContent) {
+          if (feature.properties && feature.properties.name) {
               layer.bindPopup(feature.properties.popupContent, {closeButton: false, offset: L.point(0, -20)});
               layer.on('mouseover', function() { layer.openPopup(); });
                layer.on('mouseout', function() { layer.closePopup(); });

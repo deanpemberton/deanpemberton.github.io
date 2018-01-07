@@ -4,9 +4,7 @@
 var JekyllMaps = function () {
   console.info( 'Jekyll Maps :)' );
   this.map;
-  this.data = {
-    type: 'FeatureCollection',
-    features: [
+  this.data = {[
       {% for post in site.posts %}{
         'type': 'Feature',
         'properties': {

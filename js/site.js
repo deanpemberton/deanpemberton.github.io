@@ -36,6 +36,6 @@ JekyllMaps.prototype._createMap = function() {
                 layer.bindPopup(feature.properties.name, {closeButton: false, offset: L.point(0, -20)});
                 layer.on('mouseover', function() { layer.openPopup(); });
                 layer.on('mouseout', function() { layer.closePopup(); });
-            } ).addTo( this.map );
+            } } ).addTo( this.map );
   this.map.fitBounds(this.geojson.getBounds());
 }

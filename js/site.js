@@ -32,6 +32,23 @@ JekyllMaps.prototype._createMap = function() {
   L.tileLayer( '{{ site.map-tileset }}', {
     attribution: '{{ site.map-credits }}'
   }).addTo( this.map );
-  this.geojson = L.geoJson( this.data ).addTo( this.map );
-  this.map.fitBounds(this.geojson.getBounds());
+  
+   gpsMarker = new L.geoJson(this.data, {
+        onEachFeature: function(feature, layer) {
+            if (feature.properties && feature.properties.popupContent) {
+                layer.bindPopup(feature.properties.popupContent, {closeButton: false, offset: L.point(0, -20)});
+                layer.on('mouseover', function() { layer.openPopup(); });
+                layer.on('mouseout', function() { layer.closePopup(); });
+            }
+        },
+        pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng);
+        }
+    });
+  
+    this.addLayer(gpsMarker);
+    this.fitBounds(gpsMarker.getBounds(), {padding: [0, 0]});
+  
+  //this.geojson = L.geoJson( this.data ).addTo( this.map );
+  //this.map.fitBounds(this.geojson.getBounds());
 }

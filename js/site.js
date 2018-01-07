@@ -4,7 +4,7 @@
 var JekyllMaps = function () {
   console.info( 'Jekyll Maps :)' );
   this.map;
-  this.data = {[
+  this.data = [
       {% for post in site.posts %}{
         'type': 'Feature',
         'properties': {
@@ -19,8 +19,7 @@ var JekyllMaps = function () {
           ]
         }
       },{% endfor %}
-    ]
-  };
+    ];
 
   this._createMap();
 }
